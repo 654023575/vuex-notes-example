@@ -19,5 +19,11 @@ export default {
       db.saveDatabase()
       state.entities.unshift(entity)
     })
+  },
+  updateEntity(state,entity){
+    loadCollection('notes').then((collection) => {
+            collection.update(entity)
+            db.saveDatabase()
+          })
   }
 }
