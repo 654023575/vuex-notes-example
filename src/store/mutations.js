@@ -1,4 +1,4 @@
-import {loadCollection} from '../database'
+import {loadCollection, db} from '../database'
 
 export default {
   setInitialData(state) {
@@ -11,6 +11,13 @@ export default {
       const _entites = collection.chain().find().simplesort('$loki', 'isdesc').data()
       state.entities = _entites
       console.log(this.entities)
+    })
+  },
+  createEntity(state) {
+    loadCollection('notes').then((collection) => {
+      const entity = collection.insert({body: ''})
+      db.saveDatabase()
+      state.entities.unshift(entity)
     })
   }
 }
