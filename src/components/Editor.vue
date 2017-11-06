@@ -1,7 +1,13 @@
 <template lang="html">
-  <div class="">
-    <textarea name="name" rows="8" cols="80"></textarea>
-  </div>
+  <div class="ui form">
+   <div class="filed">
+     <textarea
+     rows = "5"
+     placeholder="写点东西。。。">
+
+     </textarea>
+   </div>
+   </div>
 </template>
 
 <script>
