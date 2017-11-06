@@ -1,6 +1,6 @@
-import {db, loadCollection} from '../database'
-
-loadCollection('notes')
-.then((collection)=>{
-  console.log(collection)
-})
+export default{
+  entities:[
+    {body:'hello~'},
+    {body:'hello11~'}
+  ]
+}

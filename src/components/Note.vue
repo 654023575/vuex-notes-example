@@ -5,7 +5,7 @@
    </div>
      <div class="content">
        <div class="header">
-         {{ 'header' || '新建笔记' }}
+         {{ entity.body || '新建笔记' }}
      </div>
 
      <div class="extra">
@@ -22,6 +22,9 @@
 import Editor from './Editor'
 
 export default {
+  props:[
+  'entity'
+],
   components:{
     Editor
   }
