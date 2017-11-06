@@ -4,14 +4,16 @@
    {{updated(entity)}}
    </div>
      <div class="content">
-       <div class="header">
+       <div class="header" v-on:click="open = !open">
          {{ header(entity) || '新建笔记' }}
      </div>
 
      <div class="extra">
-     <editor v-bind:entity='entity'></editor>
+     <editor v-bind:entity='entity'v-if="open"></editor>
      {{words(entity)}} 字
-     <i class="right floated trash outline icon">
+     <i class="right floated trash outline icon"
+     v-on:click="destroy(entity)"
+     >
      </i>
     </div>
     </div>
@@ -21,7 +23,7 @@
 <script>
 import Editor from './Editor'
 import {
-  mapGetters
+  mapGetters,mapActions
 } from 'vuex'
 
 export default {
@@ -33,6 +35,16 @@ export default {
         'header'
       ]
     )
+  },
+  methods:{
+    ...mapActions([
+      'destroy'
+    ])
+  },
+  data(){
+    return {
+      open:false
+    }
   },
   props: [
     'entity'

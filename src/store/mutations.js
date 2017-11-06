@@ -25,5 +25,17 @@ export default {
             collection.update(entity)
             db.saveDatabase()
           })
+  },
+  destroyEntity(state,entity){
+    const _entities = state.entities.filter((_entity) => {
+        return _entity.$loki !== entity.$loki
+      })
+
+      state.entities = _entities
+
+      loadCollection('notes').then((collection) => {
+        collection.remove(entity)
+        db.saveDatabase()
+      })
   }
 }
